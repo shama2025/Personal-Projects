@@ -2,7 +2,8 @@
 from flask_cors import CORS
 from flask import Flask, request
 import datetime
-from store_ref_improvement import store_comments, reply
+from store_ref_improvement import store_comments
+from replies import reply
 
 app = Flask(__name__)
 CORS(app)

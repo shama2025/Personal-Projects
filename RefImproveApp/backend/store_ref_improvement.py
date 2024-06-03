@@ -12,8 +12,3 @@ def store_comments(date, comment, field_num, home_team, away_team):
         return True # Valid execution
     except:
         return False # Invalid execution
-
-
-"""This will send a reply back to the user"""
-def reply():
-    return ""
