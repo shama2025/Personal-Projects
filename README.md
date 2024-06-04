@@ -9,7 +9,7 @@ This repository will feature personal, full-stack, projects designed with the go
 
 
 ### Referee Improvement App
-This app was created with React Native as the front end and Python's Flask library for the backend. As a user, you will be able to login and send improvements to referees about their performance in a game. The purpose of this project is to get an understanding of app development and learn how to integrate the React library with a Flask backend.
+This app was created with React Native as the front end and Python's Flask library for the backend. As a user, you will be able to login and send improvements to referees about their performance in a game. The purpose of this project is to get an understanding of app development and learn how to integrate the React library with a Flask backend. This app will be tested with Jest for the frontend and Pytest for the backend.
 
 ### E-Commerce WebApp
 This app will be created with ___ as the front end and ___ for the backend. As a user, you will be able to buy the available items or sell items that you own. The purpose of this project is to practice building an application that features multiple concepts and practices in web development.
