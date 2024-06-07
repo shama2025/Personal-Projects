@@ -19,5 +19,3 @@ def reply(comment):
                  f"Assistant: {prompt}.",max_tokens=200)
     
     return output["choices"][0]["text"]
-
-print(reply("These referees were terrible and cannot call basic penalties!"))
