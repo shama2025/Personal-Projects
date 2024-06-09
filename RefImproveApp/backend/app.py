@@ -12,20 +12,20 @@ CORS(app)
 @app.route("/api/referee-improvement")
 def api_login():
     current_date = datetime.datetime.now()
-    field_num = 0
-    home_team = ""
-    away_team = ""
-    comment = ""
+    comment = request.args.get("comment")
+    field_num = request.args.get('field_num')
+    home_team = request.args.get('home_team')
+    away_team = request.args.get('away_team')
     if store_comments(current_date,comment,field_num,home_team,away_team):
         response = app.response_class(
             response = json.dumps(reply(comment)),
             status=200,
             mimetype='application/json'
         )
-        return jsonify(response) #return as json
+        return response #return as json
     response = app.response_class(
         response =json.dumps("Error when storing comment! Please come back later."),
         status=500,
         mimetype='application/json'
     )
-    return jsonify(response)
+    return response

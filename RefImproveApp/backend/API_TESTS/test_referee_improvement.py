@@ -12,6 +12,8 @@ def test_referee_improvement():
         "comment" : "These referees were terrible and cannot call basic penalties!"
     }
     res = requests.get(f"{url}/api/referee-improvement", params=ref_improve_obj)
+    print(type(res.status_code))
     if res.status_code == 200:
         assert True
-    assert False
+    else:
+        assert False
