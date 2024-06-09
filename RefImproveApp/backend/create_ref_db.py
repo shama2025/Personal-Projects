@@ -18,8 +18,3 @@ refereeeImprove(game_id TEXT PRIMARY KEY,
 """
 
 cursor.execute(table)
-
-# How to add elements 
-# cursor.execute("INSERT INTO refereeImprove (game_id, date, comment, fieldNUM, homeTeam, awayTeam)
-# VALUES ('game1', '2024-06-03', 'Good game overall', 1, 'Home Team', 'Away Team')")
-

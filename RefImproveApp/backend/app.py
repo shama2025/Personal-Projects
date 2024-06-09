@@ -22,7 +22,7 @@ def api_login():
             status=200,
             mimetype='application/json'
         )
-        return response #return as json
+        return response
     response = app.response_class(
         response =json.dumps("Error when storing comment! Please come back later."),
         status=500,

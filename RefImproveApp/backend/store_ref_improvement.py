@@ -1,5 +1,6 @@
 import sqlite3
 
+"""This will store the parameters in the referee database"""
 def store_comments(date, comment, field_num, home_team, away_team):
     try:
         # Connect to the database
@@ -24,20 +25,16 @@ def store_comments(date, comment, field_num, home_team, away_team):
         print(e)
         return False  # Error during execution
 
-
+"""This will get the size of the db so the primary key can be incremented"""
 def get_db_szie():
-        # Connect to the SQLite database
     conn = sqlite3.connect("referee_improvement.db")
     cursor = conn.cursor()
 
-    # Execute a query to count the number of rows in your table
-    size = cursor.execute("SELECT COUNT(*) FROM refereeeImprove")
+    cursor.execute("SELECT COUNT(*) FROM refereeeImprove")
 
-    # Fetch the result of the query
-    size = cursor.fetchone()[0]
+    get_size = cursor.fetchone()[0]
 
-    # Close the cursor and connection
     cursor.close()
     conn.close()
 
-    return size
+    return get_size
