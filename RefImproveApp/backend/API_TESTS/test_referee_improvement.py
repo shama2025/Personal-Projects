@@ -11,7 +11,7 @@ def test_referee_improvement():
         "away_team" : "Team 2",
         "comment" : "These referees were terrible and cannot call basic penalties!"
     }
-    res = requests.post(f"{url}/api/referee-improvement")
+    res = requests.get(f"{url}/api/referee-improvement", params=ref_improve_obj)
     if res.status_code == 200:
         return True
     return False

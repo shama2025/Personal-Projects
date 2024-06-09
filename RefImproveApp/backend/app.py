@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 
 """This endpoint will get the referee improvement info from the user"""
-@app.route("/api/referee-improvement", methods = ["POST"])
+@app.route("/api/referee-improvement")
 def api_login():
     current_date = datetime.datetime.now()
     field_num = 0
