@@ -1,6 +1,6 @@
 # This file will hold the api endpoints using the Flask-Cors library
 from flask_cors import CORS
-from flask import Flask, request,json
+from flask import Flask, request,json,jsonify
 import datetime
 from store_ref_improvement import store_comments
 from replies import reply
@@ -22,10 +22,10 @@ def api_login():
             status=200,
             mimetype='application/json'
         )
-        return response #return as json
+        return jsonify(response) #return as json
     response = app.response_class(
         response =json.dumps("Error when storing comment! Please come back later."),
         status=500,
         mimetype='application/json'
     )
-    return response
+    return jsonify(response)
