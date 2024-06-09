@@ -13,5 +13,5 @@ def test_referee_improvement():
     }
     res = requests.get(f"{url}/api/referee-improvement", params=ref_improve_obj)
     if res.status_code == 200:
-        return True
-    return False
+        assert True
+    assert False
