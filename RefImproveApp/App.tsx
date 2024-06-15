@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 
 interface RefereeObj {
   FIELDNUM: string;
@@ -8,7 +8,7 @@ interface RefereeObj {
   REFCOMMENT: string;
 }
 
-const Form = (
+const App = (
   fieldNum: string,
   homeTeam: string,
   awayTeam: string,
@@ -32,21 +32,21 @@ const Form = (
 
   return (
     <div style={isHidden ? styles.hidden : styles.visible}>
-      <label>Field Number</label>
+      <text>Field Number</text>
       <input
         type="text"
         placeholder="Field Number"
         id="fieldNum"
         value={fieldNum}
       />
-      <label>Home Team</label>
+      <text>Home Team</text>
       <input
         type="text"
         placeholder="Home Team"
         id="homeTeam"
         value={homeTeam}
       />
-      <label>Away Team</label>
+      <text>Away Team</text>
       <input
         type="text"
         placeholder="Away Team"
@@ -54,10 +54,10 @@ const Form = (
         value={awayTeam}
       />
       <hr />
-      <h4>
+      <text>
         For Reference: Closest referee is AR 1 and referee by the coaches is AR
         2
-      </h4>
+      </text>
       <input
         type="text"
         placeholder="Enter your comments about the Referees here"
@@ -66,14 +66,6 @@ const Form = (
       />
       <input type="button" title="Submit!" onClick={submitBtn} />
     </div>
-  );
-};
-
-const App = () => {
-  return (
-    <View style={styles.container}>
-      <Form/>
-    </View>
   );
 };
 
