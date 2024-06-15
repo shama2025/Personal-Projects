@@ -1,117 +1,98 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
+interface RefereeObj {
+  FIELDNUM: string;
+  HOMETEAM: string;
+  AWAYTEAM: string;
+  REFCOMMENT: string;
 }
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+const Form = (
+  fieldNum: string,
+  homeTeam: string,
+  awayTeam: string,
+  refComment: string,
+) => {
+  let isHidden = false;
+  const submitBtn = async () => {
+    const ref: RefereeObj = {
+      FIELDNUM: fieldNum,
+      HOMETEAM: homeTeam,
+      AWAYTEAM: awayTeam,
+      REFCOMMENT: refComment,
+    };
+    const res: Response = await fetch(
+      'http://127.0.0.1:5000//api/referee-improvement',
+    );
+    if (res.ok) {
+      isHidden = true;
+    }
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+    <div style={isHidden ? styles.hidden : styles.visible}>
+      <label>Field Number</label>
+      <input
+        type="text"
+        placeholder="Field Number"
+        id="fieldNum"
+        value={fieldNum}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+      <label>Home Team</label>
+      <input
+        type="text"
+        placeholder="Home Team"
+        id="homeTeam"
+        value={homeTeam}
+      />
+      <label>Away Team</label>
+      <input
+        type="text"
+        placeholder="Away Team"
+        id="awayTeam"
+        value={awayTeam}
+      />
+      <hr />
+      <h4>
+        For Reference: Closest referee is AR 1 and referee by the coaches is AR
+        2
+      </h4>
+      <input
+        type="text"
+        placeholder="Enter your comments about the Referees here"
+        id="refComment"
+        value={refComment}
+      />
+      <input type="button" title="Submit!" onClick={submitBtn} />
+    </div>
   );
-}
+};
+
+const App = () => {
+  return (
+    <View style={styles.container}>
+      <Form/>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  text: {
+    fontSize: 20,
+    fontWeight: 'bold',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  hidden: {
+    display: 'none',
   },
-  highlight: {
-    fontWeight: '700',
+  visible: {
+    display: 'flex',
   },
 });
 
