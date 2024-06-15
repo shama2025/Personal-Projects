@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 
 interface RefereeObj {
   FIELDNUM: string;
@@ -15,7 +15,7 @@ const App = (
   refComment: string,
 ) => {
   let isHidden = false;
-  const submitBtn = async () => {
+  const SubmitBtn = async () => {
     const ref: RefereeObj = {
       FIELDNUM: fieldNum,
       HOMETEAM: homeTeam,
@@ -32,21 +32,21 @@ const App = (
 
   return (
     <div style={isHidden ? styles.hidden : styles.visible}>
-      <text>Field Number</text>
+      <Text style={styles.label}>Field Number</Text>
       <input
         type="text"
         placeholder="Field Number"
         id="fieldNum"
         value={fieldNum}
       />
-      <text>Home Team</text>
+      <Text style={styles.label}>Home Team</Text>
       <input
         type="text"
         placeholder="Home Team"
         id="homeTeam"
         value={homeTeam}
       />
-      <text>Away Team</text>
+      <Text style={styles.label}>Away Team</Text>
       <input
         type="text"
         placeholder="Away Team"
@@ -54,17 +54,17 @@ const App = (
         value={awayTeam}
       />
       <hr />
-      <text>
+      <Text style={styles.header4}>
         For Reference: Closest referee is AR 1 and referee by the coaches is AR
         2
-      </text>
+      </Text>
       <input
         type="text"
         placeholder="Enter your comments about the Referees here"
         id="refComment"
         value={refComment}
       />
-      <input type="button" title="Submit!" onClick={submitBtn} />
+      <input type="button" title="Submit!" onClick={SubmitBtn} />
     </div>
   );
 };
@@ -85,6 +85,12 @@ const styles = StyleSheet.create({
   },
   visible: {
     display: 'flex',
+  },
+  label: {
+    fontSize: 15,
+  },
+  header4: {
+    fontSize: 30,
   },
 });
 
